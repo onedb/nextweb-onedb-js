@@ -4,19 +4,12 @@
 	
 	
 	<inherits name="com.ononedb.nextweb.OnedbEngine" />
-	
 	<inherits name="io.nextweb.js.NextwebJs" />
-	
 	<inherits name="one.client.gwt.OneClientGwt" />
 	
-	<inherits name="org.timepedia.exporter.Exporter" />
-	
-	<inherits name="io.nextweb.Nextweb" />
-	
-	<entry-point class='com.ononedb.nextweb.internal.DummyEntryPoint'/>
+	<entry-point class='com.ononedb.nextweb.js.internal.DummyEntryPoint'/>
 	
 	<source path=''>
       <exclude name="**/jre/**" />
-      <exclude name="**/jsserver/**" />
     </source>
 </module>
