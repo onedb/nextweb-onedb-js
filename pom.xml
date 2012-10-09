@@ -46,14 +46,11 @@
 			<version>[0.0.1,)</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>nx.servergwt</groupId>
 			<artifactId>nxServerGwt</artifactId>
 			<version>[0.0.1,)</version>
 		</dependency>
-
-		
 
 		<!-- only for gwt maven plugin!!! -->
 
