@@ -18,7 +18,7 @@
 			nx.remote.messages,
 			*
 		</module.importedPackages>
-		<module.exportedPackages>com.ononedb.js*,com.ononedb.jsserver
+		<module.exportedPackages>com.ononedb.nextweb.js*
 		</module.exportedPackages>
 		<module.serviceDefinitions>
 		</module.serviceDefinitions>
