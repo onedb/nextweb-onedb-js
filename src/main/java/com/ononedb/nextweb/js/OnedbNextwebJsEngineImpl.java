@@ -144,6 +144,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 	public void injectCapability(final Capability capability) {
 		if (capability instanceof StartServerCapability) {
 			startServerCapability = (StartServerCapability) capability;
+			return;
 		}
 
 		throw new IllegalArgumentException(
