@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>nextweb-onedb-js - Checkstyle report</title>
+    <link>http://ononedb.com</link>
+    <description>nextweb-onedb-js - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2012</copyright>
+    <item>
+      <title>File: 5,
+             Errors: 372,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://ononedb.com/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://ononedb.com/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://ononedb.com/checkstyle.html#com.ononedb.nextweb.js.fn.JsResultImplementation.java">com/ononedb/nextweb/js/fn/JsResultImplementation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  186
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://ononedb.com/checkstyle.html#com.ononedb.nextweb.js.utils.OnedbWrapper.java">com/ononedb/nextweb/js/utils/OnedbWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://ononedb.com/checkstyle.html#com.ononedb.nextweb.js.internal.DummyEntryPoint.java">com/ononedb/nextweb/js/internal/DummyEntryPoint.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://ononedb.com/checkstyle.html#com.ononedb.nextweb.js.OnedbNextwebEngineJs.java">com/ononedb/nextweb/js/OnedbNextwebEngineJs.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://ononedb.com/checkstyle.html#com.ononedb.nextweb.js.OnedbNextwebJsEngineImpl.java">com/ononedb/nextweb/js/OnedbNextwebJsEngineImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  144
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
