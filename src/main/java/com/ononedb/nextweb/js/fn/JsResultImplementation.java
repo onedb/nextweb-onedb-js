@@ -11,6 +11,7 @@ import io.nextweb.operations.callbacks.Callback;
 import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.operations.exceptions.ExceptionManager;
 import io.nextweb.operations.exceptions.ImpossibleListener;
+import io.nextweb.operations.exceptions.ImpossibleResult;
 import io.nextweb.operations.exceptions.UnauthorizedListener;
 import io.nextweb.operations.exceptions.UnauthorizedResult;
 import io.nextweb.operations.exceptions.UndefinedListener;
@@ -101,6 +102,18 @@ public class JsResultImplementation<ResultType> implements Result<ResultType> {
 							deferredCallback.onUndefined(r);
 						}
 						deferredCalls.clear();
+					}
+				}).catchImpossible(new ImpossibleListener() {
+
+					@Override
+					public void onImpossible(final ImpossibleResult ir) {
+						requestingResult = false;
+						callback.onImpossible(ir);
+						for (final Callback<ResultType> deferredCallback : deferredCalls) {
+							deferredCallback.onImpossible(ir);
+						}
+						deferredCalls.clear();
+
 					}
 				}));
 
