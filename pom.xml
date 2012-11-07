@@ -2,7 +2,7 @@
 <project>
 	<groupId>com.ononedb.nextweb.js</groupId>
 	<artifactId>nextweb-onedb-js</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.13-SNAPSHOT</version>
 	<description>Implementation of Nextweb JS API using onedb.
 	</description>
 	<url>http://ononedb.com</url>
