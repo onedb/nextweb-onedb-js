@@ -1,4 +1,4 @@
 nextweb-onedb-js
 ================
 
-onedb Implementation of Nextweb JavaScript API
+[onedb](http://ononedb.com) implementation of [Nextweb JavaScript API](http://nextweb.io).
