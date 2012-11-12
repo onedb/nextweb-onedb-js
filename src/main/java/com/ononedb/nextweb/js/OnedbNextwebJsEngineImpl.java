@@ -3,11 +3,10 @@ package com.ononedb.nextweb.js;
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
 import io.nextweb.engine.Capability;
+import io.nextweb.engine.Factory;
 import io.nextweb.engine.StartServerCapability;
-import io.nextweb.fn.AsyncResult;
 import io.nextweb.fn.ExceptionListener;
 import io.nextweb.fn.ExceptionResult;
-import io.nextweb.fn.Result;
 import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.JsNextwebEngine;
@@ -22,7 +21,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.common.H;
 import com.ononedb.nextweb.internal.OnedbFactory;
-import com.ononedb.nextweb.js.fn.JsResultImplementation;
+import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.js.utils.OnedbWrapper;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
@@ -86,14 +85,6 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 	}
 
 	@Override
-	public <ResultType> Result<ResultType> createResult(
-			final ExceptionManager exceptionManager, final Session session,
-			final AsyncResult<ResultType> asyncResult) {
-		return new JsResultImplementation<ResultType>(session,
-				exceptionManager, asyncResult);
-	}
-
-	@Override
 	public ExceptionManager getExceptionManager() {
 
 		return exceptionManager;
@@ -101,7 +92,12 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 
 	@Override
 	public OnedbFactory getOnedbFactory() {
-		return new OnedbFactory();
+		return new OnedbJsFactory();
+	}
+
+	@Override
+	public Factory getFactory() {
+		return new OnedbJsFactory();
 	}
 
 	public OnedbNextwebJsEngineImpl() {
