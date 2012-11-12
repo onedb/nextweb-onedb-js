@@ -82,7 +82,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 
 		final CoreDsl dsl = assertDsl();
 
-		return getFactory().createSession(this, dsl.createClient());
+		return getOnedbFactory().createSession(this, dsl.createClient());
 	}
 
 	@Override
@@ -100,13 +100,13 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 	}
 
 	@Override
-	public OnedbFactory getFactory() {
+	public OnedbFactory getOnedbFactory() {
 		return new OnedbFactory();
 	}
 
 	public OnedbNextwebJsEngineImpl() {
 		super();
-		this.exceptionManager = getFactory().createExceptionManager(null);
+		this.exceptionManager = getOnedbFactory().createExceptionManager(null);
 		this.exceptionManager.catchExceptions(new ExceptionListener() {
 
 			@Override
