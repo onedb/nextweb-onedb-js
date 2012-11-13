@@ -20,7 +20,7 @@ import one.core.dsl.CoreDsl;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.common.H;
-import com.ononedb.nextweb.internal.OnedbFactory;
+import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.js.utils.OnedbWrapper;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;

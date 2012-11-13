@@ -5,7 +5,7 @@ import io.nextweb.fn.AsyncResult;
 import io.nextweb.fn.Result;
 import io.nextweb.operations.exceptions.ExceptionManager;
 
-import com.ononedb.nextweb.internal.OnedbFactory;
+import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.fn.JsResultImplementation;
 
 public class OnedbJsFactory extends OnedbFactory {
