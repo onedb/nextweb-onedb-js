@@ -22,7 +22,6 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.common.H;
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
-import com.ononedb.nextweb.js.utils.OnedbWrapper;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
 public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
@@ -112,8 +111,8 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 						+ r.origin() + " (" + r.origin().getClass() + ")");
 			}
 		});
-		this.jsFactory = new JsFactory();
-		jsFactory.getWrappers().addWrapper(OnedbWrapper.ONEJSON);
+		this.jsFactory = new JsFactory(this);
+		// jsFactory.getWrappers().addWrapper(OnedbWrapper.ONEJSON);
 
 	}
 
