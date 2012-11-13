@@ -12,6 +12,8 @@ public class OnedbWrapper {
 
 	public final static Wrapper ONEJSON = new Wrapper() {
 
+		// TODO change that OneJson is already unwrapped by the Nextweb layer
+
 		@Override
 		public Object wrap(final Object input) {
 			return getJsObject(((OneJSON) input).getJSONString());

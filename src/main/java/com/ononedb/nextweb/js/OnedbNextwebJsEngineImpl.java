@@ -114,6 +114,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 		});
 		this.jsFactory = new JsFactory();
 		jsFactory.getWrappers().addWrapper(OnedbWrapper.ONEJSON);
+
 	}
 
 	@Override
