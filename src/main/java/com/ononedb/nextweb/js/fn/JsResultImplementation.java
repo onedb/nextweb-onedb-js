@@ -217,4 +217,10 @@ public class JsResultImplementation<ResultType> implements Result<ResultType> {
 		return this;
 	}
 
+	@Override
+	public AsyncResult<ResultType> getDecoratedResult() {
+
+		return this.asyncResult;
+	}
+
 }
