@@ -78,7 +78,7 @@
 	<packaging>bundle</packaging>
 	<build>
 
-		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<!-- <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory> -->
 
 		<plugins>
 
@@ -161,15 +161,13 @@
 
 				<version>2.5.1</version>
 				<configuration>
-					<runTarget>onedbtest.html</runTarget>
+					<!-- <runTarget>onedbtest.html</runTarget> -->
 					<draftCompile>${module.draftCompile}</draftCompile>
 					<logLevel>INFO</logLevel>
 					<validateOnly>true</validateOnly>
 					<gwtVersion>${gwtVersion}</gwtVersion>
 
-					<hostedWebapp>${basedir}/src/main/webapp</hostedWebapp>
-
-					<webappDirectory>${basedir}/src/main/webapp</webappDirectory>
+					<!-- <hostedWebapp>${basedir}/src/main/webapp</hostedWebapp> <webappDirectory>${basedir}/src/main/webapp</webappDirectory> -->
 
 					<htmlunit>IE7</htmlunit> <!-- or IE6 or FF3, ... -->
 
@@ -181,50 +179,11 @@
 
 
 
-				<executions>
-					<execution>
-						<id>gwtcompile</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-					<!-- GWT tests are triggered in phase [integration-test] -->
-					<execution>
-						<goals>
-							<goal>test</goal>
-						</goals>
-					</execution>
-				</executions>
+
 			</plugin>
 
-			<!-- FOR MAVEN ECLIPSE PLUGIN -->
-			<!-- Dependency Plugin used to copy the dependency JARs into the root 
-				project folder. There the Maven eclipse plugin will add them to the classpath 
-				of PDE projects. -->
-			<plugin>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
 
-				</executions>
-			</plugin>
 
-			<!-- Cleanup necessary because of PDE tweaks, clear the project directory -->
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${basedir}</directory>
-							<includes>
-								<include>*.jar</include>
-							</includes>
-							<followSymlinks>false</followSymlinks>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
 
 			<!-- Keep the MANIFEST.MF used by eclipse in sync with the MANIFEST.MF 
 				created by the maven bundle plugin -->
@@ -239,8 +198,7 @@
 						<configuration>
 							<tasks>
 								<delete file="${basedir}/META-INF/MANIFEST.MF" />
-								<copy file="src/main/webapp/WEB-INF/classes/META-INF/MANIFEST.MF"
-									tofile="${basedir}/META-INF/MANIFEST.MF" />
+								<copy file="target/classes/META-INF/MANIFEST.MF" tofile="${basedir}/META-INF/MANIFEST.MF" />
 							</tasks>
 						</configuration>
 					</execution>
