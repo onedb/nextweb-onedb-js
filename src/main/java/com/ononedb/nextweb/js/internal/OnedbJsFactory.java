@@ -3,7 +3,7 @@ package com.ononedb.nextweb.js.internal;
 import io.nextweb.Session;
 import io.nextweb.fn.AsyncResult;
 import io.nextweb.fn.Result;
-import io.nextweb.operations.exceptions.ExceptionManager;
+import io.nextweb.fn.exceptions.ExceptionManager;
 
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.fn.JsResultImplementation;
