@@ -2,6 +2,7 @@ package com.ononedb.nextweb.js;
 
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
+import io.nextweb.common.SessionConfiguration;
 import io.nextweb.engine.Capability;
 import io.nextweb.engine.Factory;
 import io.nextweb.engine.StartServerCapability;
@@ -92,7 +93,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
     }
 
     @Override
-    public Session createSession(final PersistenceConnection connection) {
+    public Session createSession(final SessionConfiguration configuration) {
         final CoreDsl dsl = assertDsl();
 
         return getOnedbFactory().createSession(this,
