@@ -99,6 +99,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         return getOnedbFactory().createSession(this,
                 dsl.createClient(Wrappers.wrap(connection)), connection);
     }
+    
 
     @Override
     public ExceptionManager getExceptionManager() {
