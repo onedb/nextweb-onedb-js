@@ -6,7 +6,6 @@ import io.nextweb.common.SessionConfiguration;
 import io.nextweb.engine.Capability;
 import io.nextweb.engine.Factory;
 import io.nextweb.engine.StartServerCapability;
-import io.nextweb.engine.persistence.PersistenceConnection;
 import io.nextweb.fn.exceptions.ExceptionListener;
 import io.nextweb.fn.exceptions.ExceptionManager;
 import io.nextweb.fn.exceptions.ExceptionResult;
@@ -23,7 +22,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.common.H;
 import com.ononedb.nextweb.common.OnedbFactory;
-import com.ononedb.nextweb.common.Wrappers;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
