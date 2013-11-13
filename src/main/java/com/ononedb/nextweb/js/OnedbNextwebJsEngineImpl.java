@@ -97,7 +97,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         final CoreDsl dsl = assertDsl();
 
         return getOnedbFactory().createSession(this,
-                dsl.createClient(configuration));
+                dsl.createClient(configuration), configuration);
     }
     
 
