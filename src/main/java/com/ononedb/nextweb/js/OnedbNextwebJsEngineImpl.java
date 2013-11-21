@@ -9,6 +9,7 @@ import io.nextweb.engine.StartServerCapability;
 import io.nextweb.fn.exceptions.ExceptionListener;
 import io.nextweb.fn.exceptions.ExceptionManager;
 import io.nextweb.fn.exceptions.ExceptionResult;
+import io.nextweb.fn.js.exceptions.ExceptionUtils;
 import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.JsNextwebEngine;
@@ -66,10 +67,11 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
                     @Override
                     public void onBackgroundException(final Object operation,
                             final Throwable t, final Throwable origin) {
-                        throw new RuntimeException("Exception: "
+                       
+                    	throw new RuntimeException("Uncaught background exception: "
                                 + t.getMessage() + " for operation: ["
                                 + operation + "] originating from: [" + origin
-                                + "].", t);
+                                + "]. "+ExceptionUtils.getStacktrace(t), t);
                     }
                 });
 
