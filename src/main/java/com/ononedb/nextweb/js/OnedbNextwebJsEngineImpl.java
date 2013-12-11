@@ -71,7 +71,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
                     	throw new RuntimeException("Uncaught background exception: "
                                 + t.getMessage() + " for operation: ["
                                 + operation + "] originating from: [" + origin
-                                + "]. "+ExceptionUtils.getStacktrace(t), t);
+                                + "]. "+ExceptionUtils.getStacktrace(t)+" Origin Trace: "+ExceptionUtils.getStacktrace(origin), t);
                     }
                 });
 
