@@ -26,12 +26,19 @@ import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
+import de.mxro.factories.Factories;
+import de.mxro.factories.FactoryCollection;
+import de.mxro.service.ServiceRegistry;
+import de.mxro.service.Services;
+
 public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 
     private CoreDsl dsl;
     private final ExceptionManager exceptionManager;
     private final JsFactory jsFactory;
     private StartServerCapability startServerCapability;
+	private FactoryCollection factories;
+	private ServiceRegistry services;
 
     public static OnedbNextwebJsEngineImpl init() {
         final OnedbNextwebJsEngineImpl engine = new OnedbNextwebJsEngineImpl();
@@ -117,6 +124,17 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         return new OnedbJsFactory();
     }
 
+    
+    @Override
+   	public FactoryCollection factories() {
+   		return factories;
+   	}
+
+   	@Override
+   	public ServiceRegistry services() {
+   		return services;
+   	}
+    
     public OnedbNextwebJsEngineImpl() {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
@@ -131,7 +149,8 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         });
         this.jsFactory = new JsFactory(this);
         // jsFactory.getWrappers().addWrapper(OnedbWrapper.ONEJSON);
-
+        this.factories = Factories.create();
+        this.services = Services.create();
     }
 
     @Override
