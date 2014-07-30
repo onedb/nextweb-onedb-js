@@ -176,4 +176,11 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         return startServerCapability.startServer(port);
     }
 
+	@Override
+	public Object getDsl() {
+		return dsl;
+	}
+
+    
+    
 }
