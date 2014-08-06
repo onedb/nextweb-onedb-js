@@ -2,7 +2,6 @@ package com.ononedb.nextweb.js.fn;
 
 import io.nextweb.Session;
 import io.nextweb.fn.AsyncResult;
-import io.nextweb.fn.Closure;
 import io.nextweb.fn.Fn;
 import io.nextweb.fn.Result;
 import io.nextweb.fn.callbacks.Callback;
@@ -25,6 +24,8 @@ import one.core.dsl.callbacks.WhenCommitted;
 import one.core.dsl.callbacks.results.WithCommittedResult;
 
 import com.ononedb.nextweb.OnedbSession;
+
+import de.mxro.fn.Closure;
 
 public class JsResultImplementation<ResultType> implements Result<ResultType> {
 
