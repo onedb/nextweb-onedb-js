@@ -4,7 +4,7 @@ import io.nextweb.Session;
 import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.promise.Deferred;
 import io.nextweb.promise.Fn;
-import io.nextweb.promise.Result;
+import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.callbacks.Callback;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
@@ -27,7 +27,7 @@ import com.ononedb.nextweb.OnedbSession;
 
 import de.mxro.fn.Closure;
 
-public class JsResultImplementation<ResultType> implements Result<ResultType> {
+public class JsResultImplementation<ResultType> implements NextwebPromise<ResultType> {
 
 	private final Deferred<ResultType> asyncResult;
 
@@ -194,26 +194,26 @@ public class JsResultImplementation<ResultType> implements Result<ResultType> {
 	}
 
 	@Override
-	public Result<ResultType> catchImpossible(final ImpossibleListener listener) {
+	public NextwebPromise<ResultType> catchImpossible(final ImpossibleListener listener) {
 		this.exceptionManager.catchImpossible(listener);
 		return this;
 	}
 
 	@Override
-	public Result<ResultType> catchUndefined(final UndefinedListener listener) {
+	public NextwebPromise<ResultType> catchUndefined(final UndefinedListener listener) {
 		this.exceptionManager.catchUndefined(listener);
 		return this;
 	}
 
 	@Override
-	public Result<ResultType> catchUnauthorized(
+	public NextwebPromise<ResultType> catchUnauthorized(
 			final UnauthorizedListener listener) {
 		this.exceptionManager.catchUnauthorized(listener);
 		return this;
 	}
 
 	@Override
-	public Result<ResultType> catchExceptions(final ExceptionListener listener) {
+	public NextwebPromise<ResultType> catchExceptions(final ExceptionListener listener) {
 		this.exceptionManager.catchExceptions(listener);
 		return this;
 	}
