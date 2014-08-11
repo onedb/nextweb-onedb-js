@@ -1,9 +1,9 @@
 package com.ononedb.nextweb.js.internal;
 
 import io.nextweb.Session;
-import io.nextweb.fn.Deferred;
-import io.nextweb.fn.Result;
-import io.nextweb.fn.exceptions.ExceptionManager;
+import io.nextweb.promise.Deferred;
+import io.nextweb.promise.Result;
+import io.nextweb.promise.exceptions.ExceptionManager;
 
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.fn.JsResultImplementation;
