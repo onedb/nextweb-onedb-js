@@ -37,8 +37,8 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
     private final ExceptionManager exceptionManager;
     private final JsFactory jsFactory;
     private StartServerCapability startServerCapability;
-	private FactoryCollection factories;
-	private ServiceRegistry services;
+    private final FactoryCollection factories;
+    private final ServiceRegistry services;
 
     public static OnedbNextwebJsEngineImpl init() {
         final OnedbNextwebJsEngineImpl engine = new OnedbNextwebJsEngineImpl();
@@ -47,8 +47,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
     }
 
     public static OnedbNextwebJsEngineImpl assertInitialized() {
-        if (NextwebJs.getEngine() == null
-                || (!(NextwebJs.getEngine() instanceof JsNextwebEngine))) {
+        if (NextwebJs.getEngine() == null || (!(NextwebJs.getEngine() instanceof JsNextwebEngine))) {
             return init();
         }
 
@@ -60,27 +59,22 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
             return dsl;
         }
 
-        final GwtRemoteServiceAsync gwtService = GWT
-                .create(GwtRemoteService.class);
+        final GwtRemoteServiceAsync gwtService = GWT.create(GwtRemoteService.class);
 
-        ((ServiceDefTarget) gwtService)
-                .setServiceEntryPoint("/servlets/v01/gwtrpc");
+        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
 
         dsl = OneGwt.init(gwtService, "");
 
-        dsl.getDefaults().getSettings()
-                .setDefaultBackgroundListener(new BackgroundListener() {
+        dsl.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
-                    @Override
-                    public void onBackgroundException(final Object operation,
-                            final Throwable t, final Throwable origin) {
-                       
-                    	throw new RuntimeException("Uncaught background exception: "
-                                + t.getMessage() + " for operation: ["
-                                + operation + "] originating from: [" + origin
-                                + "]. "+ExceptionUtils.getStacktrace(t)+" Origin Trace: "+ExceptionUtils.getStacktrace(origin), t);
-                    }
-                });
+            @Override
+            public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
+
+                throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
+                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
+                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
+            }
+        });
 
         return dsl;
     }
@@ -103,10 +97,8 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
     public Session createSession(final SessionConfiguration configuration) {
         final CoreDsl dsl = assertDsl();
 
-        return getOnedbFactory().createSession(this,
-                dsl.createClient(configuration), configuration);
+        return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
     }
-    
 
     @Override
     public ExceptionManager getExceptionManager() {
@@ -124,17 +116,16 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
         return new OnedbJsFactory();
     }
 
-    
     @Override
-   	public FactoryCollection factories() {
-   		return factories;
-   	}
+    public FactoryCollection factories() {
+        return factories;
+    }
 
-   	@Override
-   	public ServiceRegistry services() {
-   		return services;
-   	}
-    
+    @Override
+    public ServiceRegistry services() {
+        return services;
+    }
+
     public OnedbNextwebJsEngineImpl() {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
@@ -142,8 +133,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
 
             @Override
             public void onFailure(final ExceptionResult r) {
-                throw new RuntimeException("Unhandled exception: "
-                        + r.exception().getMessage() + " from object "
+                throw new RuntimeException("Unhandled exception: " + r.exception().getMessage() + " from object "
                         + r.origin() + " (" + r.origin().getClass() + ")");
             }
         });
@@ -180,26 +170,22 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
             return;
         }
 
-        throw new IllegalArgumentException(
-                "This engine cannot recognize the capability: ["
-                        + capability.getClass() + "]");
+        throw new IllegalArgumentException("This engine cannot recognize the capability: [" + capability.getClass()
+                + "]");
     }
 
     @Override
     public LocalServer startServer(final int port) {
         if (startServerCapability == null) {
-            throw new IllegalStateException(
-                    "Please inject a StartServerCapability first.");
+            throw new IllegalStateException("Please inject a StartServerCapability first.");
         }
 
         return startServerCapability.startServer(port);
     }
 
-	@Override
-	public Object getDsl() {
-		return dsl;
-	}
+    @Override
+    public CoreDsl getDsl() {
+        return dsl;
+    }
 
-    
-    
 }
