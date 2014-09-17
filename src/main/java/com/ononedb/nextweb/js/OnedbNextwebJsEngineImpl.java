@@ -15,6 +15,7 @@ import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
+import nx.remote.RemoteConnectionDecorator;
 import one.client.gwt.OneGwt;
 import one.core.domain.BackgroundListener;
 import one.core.dsl.CoreDsl;
@@ -186,6 +187,16 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
     @Override
     public CoreDsl getDsl() {
         return dsl;
+    }
+
+    @Override
+    public void addConnectionDecorator(final RemoteConnectionDecorator decorator) {
+        OneGwt.getSettings().addConnectionDecorator(decorator);
+    }
+
+    @Override
+    public void removeConnectionDecorator(final RemoteConnectionDecorator decorator) {
+        OneGwt.getSettings().removeConnectionDecorator(decorator);
     }
 
 }
