@@ -17,6 +17,7 @@ import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
+import nx.remote.RemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
 import one.client.gwt.OneGwt;
 import one.core.domain.BackgroundListener;
@@ -207,6 +208,11 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public void removeConnectionDecorator(final RemoteConnectionDecorator decorator) {
         OneGwt.getSettings().removeConnectionDecorator(decorator);
+    }
+
+    @Override
+    public RemoteConnection createRemoteConnection() {
+        return OneGwt.createRemoteConnection();
     }
 
 }
