@@ -149,7 +149,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             }
         });
         this.jsFactory = new JsFactory(this);
-        // jsFactory.getWrappers().addWrapper(OnedbWrapper.ONEJSON);
+
         this.factories = Factories.create();
         this.services = Services.create();
     }
