@@ -5,6 +5,7 @@ import io.nextweb.common.LocalServer;
 import io.nextweb.common.SessionConfiguration;
 import io.nextweb.engine.Capability;
 import io.nextweb.engine.Factory;
+import io.nextweb.engine.NextwebEngine;
 import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
@@ -34,7 +35,14 @@ import de.mxro.factories.FactoryCollection;
 import de.mxro.service.ServiceRegistry;
 import de.mxro.service.Services;
 
-public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngine, NextwebEngineJs {
+/**
+ * <p>
+ * The onedb implementation of a {@link NextwebEngine}.
+ * 
+ * @author <a href="http://www.mxro.de">Max Rohde</a>
+ *
+ */
+public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs {
 
     private CoreDsl dsl;
     private final ExceptionManager exceptionManager;
@@ -43,18 +51,18 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngine, NextwebEngi
     private final FactoryCollection factories;
     private final ServiceRegistry services;
 
-    public static OnedbNextwebJsEngineImpl init() {
-        final OnedbNextwebJsEngineImpl engine = new OnedbNextwebJsEngineImpl();
+    public static OnedbNextwebEngineJs init() {
+        final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
         NextwebJs.injectEngine(JsNextwebEngine.wrap(engine));
         return engine;
     }
 
-    public static OnedbNextwebJsEngineImpl assertInitialized() {
+    public static OnedbNextwebEngineJs assertInitialized() {
         if (NextwebJs.getEngine() == null || (!(NextwebJs.getEngine() instanceof JsNextwebEngine))) {
             return init();
         }
 
-        return (OnedbNextwebJsEngineImpl) NextwebJs.getEngine().getEngine();
+        return (OnedbNextwebEngineJs) NextwebJs.getEngine().getEngine();
     }
 
     private CoreDsl assertDsl() {
@@ -129,7 +137,7 @@ public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngine, NextwebEngi
         return services;
     }
 
-    public OnedbNextwebJsEngineImpl() {
+    public OnedbNextwebEngineJs() {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
         this.exceptionManager.catchExceptions(new ExceptionListener() {
