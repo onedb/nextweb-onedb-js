@@ -9,6 +9,7 @@ import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.JsNextwebEngine;
+import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -22,6 +23,7 @@ import one.core.dsl.CoreDsl;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.ononedb.nextweb.OnedbNextwebEngine;
 import com.ononedb.nextweb.common.H;
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
@@ -32,7 +34,7 @@ import de.mxro.factories.FactoryCollection;
 import de.mxro.service.ServiceRegistry;
 import de.mxro.service.Services;
 
-public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngineJs {
+public class OnedbNextwebJsEngineImpl implements OnedbNextwebEngine, NextwebEngineJs {
 
     private CoreDsl dsl;
     private final ExceptionManager exceptionManager;
