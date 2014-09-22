@@ -144,6 +144,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.services = Services.create();
 
         this.dsl = createDsl(internalConnection);
+        GWT.log("Creating engine with " + internalConnection);
     }
 
     private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
