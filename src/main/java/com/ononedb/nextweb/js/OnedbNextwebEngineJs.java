@@ -21,6 +21,7 @@ import nx.remote.RemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
 import nx.remote.StoppableRemoteConnection;
 import one.client.gwt.OneGwt;
+import one.common.One;
 import one.core.domain.BackgroundListener;
 import one.core.dsl.CoreDsl;
 
@@ -57,6 +58,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     public static OnedbNextwebEngineJs init() {
         final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
         NextwebJs.injectEngine(JsNextwebEngine.wrap(engine));
+        One.setDsl(engine.getDsl());
         return engine;
     }
 
@@ -146,7 +148,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
 
-        res = OneGwt.createDslAndSetGlobalDsl(gwtService, "");
+        res = OneGwt.createDsl(gwtService, "");
 
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
