@@ -19,6 +19,7 @@ import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
 import nx.remote.RemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
+import nx.remote.StoppableRemoteConnection;
 import one.client.gwt.OneGwt;
 import one.core.domain.BackgroundListener;
 import one.core.dsl.CoreDsl;
@@ -46,11 +47,11 @@ import de.mxro.service.Services;
 public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs {
 
     private CoreDsl dsl;
-    private final ExceptionManager exceptionManager;
+    protected ExceptionManager exceptionManager;
     private final JsFactory jsFactory;
-    private StartServerCapability startServerCapability;
-    private final FactoryCollection factories;
-    private final ServiceRegistry services;
+    protected StartServerCapability startServerCapability;
+    protected FactoryCollection factories;
+    protected ServiceRegistry services;
 
     public static OnedbNextwebEngineJs init() {
         final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
@@ -213,6 +214,12 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public RemoteConnection createRemoteConnection() {
         return OneGwt.createRemoteConnection();
+    }
+
+    @Override
+    public OnedbNextwebEngine fork(final StoppableRemoteConnection internalConnection) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
