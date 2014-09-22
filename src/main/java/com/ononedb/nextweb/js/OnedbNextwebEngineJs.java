@@ -46,7 +46,7 @@ import de.mxro.service.Services;
  */
 public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs {
 
-    private CoreDsl dsl;
+    private final CoreDsl dsl;
 
     private final JsFactory jsFactory;
     protected ExceptionManager exceptionManager;
@@ -68,35 +68,10 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         return (OnedbNextwebEngineJs) NextwebJs.getEngine().getEngine();
     }
 
-    private CoreDsl assertDsl() {
-        if (dsl != null) {
-            return dsl;
-        }
-
-        final GwtRemoteServiceAsync gwtService = GWT.create(GwtRemoteService.class);
-
-        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
-
-        dsl = OneGwt.init(gwtService, "");
-
-        dsl.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
-
-            @Override
-            public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
-
-                throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
-                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
-                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
-            }
-        });
-
-        return dsl;
-    }
-
     @Override
     public Session createSession() {
 
-        final CoreDsl dsl = assertDsl();
+        final CoreDsl dsl = this.dsl;
 
         return getOnedbFactory().createSession(this, dsl.createClient(), null);
     }
@@ -109,7 +84,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     @Override
     public Session createSession(final SessionConfiguration configuration) {
-        final CoreDsl dsl = assertDsl();
+        final CoreDsl dsl = this.dsl;
 
         return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
     }
@@ -159,6 +134,31 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         this.factories = Factories.create();
         this.services = Services.create();
+
+        this.dsl = createDsl();
+    }
+
+    private CoreDsl createDsl() {
+        assert dsl == null;
+
+        final GwtRemoteServiceAsync gwtService = GWT.create(GwtRemoteService.class);
+
+        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
+
+        dsl = OneGwt.init(gwtService, "");
+
+        dsl.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
+
+            @Override
+            public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
+
+                throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
+                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
+                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
+            }
+        });
+
+        return dsl;
     }
 
     @Override
