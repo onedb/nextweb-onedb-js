@@ -15,6 +15,10 @@ import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
 import nx.remote.RemoteConnection;
@@ -144,7 +148,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.services = Services.create();
 
         this.dsl = createDsl(internalConnection);
-        GWT.log("Creating engine with " + internalConnection);
+        Logger.getLogger("me").log(Level.SEVERE, "Creating engine with " + internalConnection);
     }
 
     private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
