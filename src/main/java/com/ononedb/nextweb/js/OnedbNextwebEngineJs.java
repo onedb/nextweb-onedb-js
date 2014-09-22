@@ -138,16 +138,17 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.dsl = createDsl();
     }
 
-    private CoreDsl createDsl() {
+    private final CoreDsl createDsl() {
+        CoreDsl res;
         assert dsl == null;
 
         final GwtRemoteServiceAsync gwtService = GWT.create(GwtRemoteService.class);
 
         ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
 
-        dsl = OneGwt.init(gwtService, "");
+        res = OneGwt.init(gwtService, "");
 
-        dsl.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
+        res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
             @Override
             public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
@@ -158,7 +159,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             }
         });
 
-        return dsl;
+        return res;
     }
 
     @Override
