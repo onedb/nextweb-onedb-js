@@ -47,8 +47,9 @@ import de.mxro.service.Services;
 public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs {
 
     private CoreDsl dsl;
-    protected ExceptionManager exceptionManager;
+
     private final JsFactory jsFactory;
+    protected ExceptionManager exceptionManager;
     protected StartServerCapability startServerCapability;
     protected FactoryCollection factories;
     protected ServiceRegistry services;
@@ -140,6 +141,10 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     public OnedbNextwebEngineJs() {
+        this(null);
+    }
+
+    public OnedbNextwebEngineJs(final StoppableRemoteConnection internalConnection) {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
         this.exceptionManager.catchExceptions(new ExceptionListener() {
@@ -218,8 +223,14 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     @Override
     public OnedbNextwebEngine fork(final StoppableRemoteConnection internalConnection) {
-        // TODO Auto-generated method stub
-        return null;
+        final OnedbNextwebEngineJs forkedEngine = new OnedbNextwebEngineJs(internalConnection);
+
+        forkedEngine.factories = factories;
+        forkedEngine.services = services;
+        forkedEngine.startServerCapability = startServerCapability;
+        forkedEngine.exceptionManager = exceptionManager;
+
+        return forkedEngine;
     }
 
 }
