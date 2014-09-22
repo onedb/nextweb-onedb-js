@@ -121,6 +121,12 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this(null);
     }
 
+    /**
+     * 
+     * @param internalConnection
+     *            The connection to be used for all sessions created with this
+     *            engine.
+     */
     public OnedbNextwebEngineJs(final StoppableRemoteConnection internalConnection) {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
@@ -137,10 +143,10 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.factories = Factories.create();
         this.services = Services.create();
 
-        this.dsl = createDsl();
+        this.dsl = createDsl(internalConnection);
     }
 
-    private final CoreDsl createDsl() {
+    private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
         CoreDsl res;
         assert dsl == null;
 
@@ -148,7 +154,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
 
-        res = OneGwt.createDsl(gwtService, "");
+        res = OneGwt.createDsl(gwtService, "", internalConnection);
 
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
