@@ -146,7 +146,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
 
-        res = OneGwt.init(gwtService, "");
+        res = OneGwt.createDslAndSetGlobalDsl(gwtService, "");
 
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
