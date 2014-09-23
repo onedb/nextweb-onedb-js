@@ -31,6 +31,7 @@ import com.ononedb.nextweb.OnedbNextwebEngine;
 import com.ononedb.nextweb.common.H;
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.internal.OnedbJsFactory;
+import com.ononedb.nextweb.local.LocalServerManager;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
 import de.mxro.factories.Factories;
@@ -54,6 +55,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     protected StartServerCapability startServerCapability;
     protected FactoryCollection factories;
     protected ServiceRegistry services;
+
+    protected LocalServerManager localServers;
 
     public static OnedbNextwebEngineJs init() {
         final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
@@ -144,6 +147,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.services = Services.create();
 
         this.dsl = createDsl(internalConnection);
+
+        this.localServers = new LocalServerManager();
     }
 
     private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
@@ -228,6 +233,11 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public RemoteConnection createRemoteConnection() {
         return OneGwt.createRemoteConnection();
+    }
+
+    @Override
+    public LocalServerManager localServers() {
+        return localServers;
     }
 
     @Override
