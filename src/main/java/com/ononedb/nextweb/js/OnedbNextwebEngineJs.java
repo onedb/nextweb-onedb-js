@@ -11,7 +11,6 @@ import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.JsNextwebEngine;
 import io.nextweb.js.engine.NextwebEngineJs;
-import io.nextweb.js.utils.Console;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -248,9 +247,9 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         this.factories = Factories.create();
         this.services = Services.create();
-        Console.log("Creating dsl ...");
+
         this.dsl = createDsl(internalConnection);
-        Console.log("dsl created.");
+
         this.localServers = new LocalServerManager();
     }
 
