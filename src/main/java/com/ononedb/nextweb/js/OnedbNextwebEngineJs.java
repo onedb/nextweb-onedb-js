@@ -6,12 +6,12 @@ import io.nextweb.common.SessionConfiguration;
 import io.nextweb.engine.Capability;
 import io.nextweb.engine.Factory;
 import io.nextweb.engine.NextwebEngine;
+import io.nextweb.engine.NextwebGlobal;
 import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.JsNextwebEngine;
 import io.nextweb.js.engine.NextwebEngineJs;
-import io.nextweb.js.utils.Console;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -248,11 +248,15 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         this.factories = Factories.create();
         this.services = Services.create();
-        Console.log("Create Dsl");
+        // Console.log("Create Dsl");
         this.dsl = createDsl(internalConnection);
-        Console.log("dsl created");
+        // Console.log("dsl created");
         this.localServers = new LocalServerManager();
-        Console.log("all done");
+        // Console.log("all done");
+
+        if (NextwebGlobal.getStartServerCapability() != null) {
+            this.startServerCapability = NextwebGlobal.getStartServerCapability();
+        }
     }
 
     @Override
