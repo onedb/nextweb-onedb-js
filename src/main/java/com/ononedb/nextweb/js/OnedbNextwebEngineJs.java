@@ -124,70 +124,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this(null);
     }
 
-    /**
-     * 
-     * @param internalConnection
-     *            The connection to be used for all sessions created with this
-     *            engine.
-     */
-    public OnedbNextwebEngineJs(final StoppableRemoteConnection internalConnection) {
-        super();
-        this.exceptionManager = getOnedbFactory().createExceptionManager(null);
-        this.exceptionManager.catchExceptions(new ExceptionListener() {
-
-            @Override
-            public void onFailure(final ExceptionResult r) {
-                throw new RuntimeException("Unhandled exception: " + r.exception().getMessage() + " from object "
-                        + r.origin() + " (" + r.origin().getClass() + ")");
-            }
-        });
-        this.jsFactory = new JsFactory(this);
-
-        this.factories = Factories.create();
-        this.services = Services.create();
-
-        this.dsl = createDsl(internalConnection);
-
-        this.localServers = new LocalServerManager();
-    }
-
-    private static GwtRemoteServiceAsync gwtService = null;
-
-    private static GwtRemoteServiceAsync assertGwtService() {
-        if (gwtService != null) {
-            return gwtService;
-        }
-
-        gwtService = GWT.create(GwtRemoteService.class);
-
-        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
-
-        return gwtService;
-    }
-
-    private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
-        CoreDsl res;
-        assert dsl == null;
-
-        res = OneGwt.createDsl(assertGwtService(), "", internalConnection);
-
-        if (!One.isDslInitialized()) {
-            One.setDsl(res);
-        }
-        res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
-
-            @Override
-            public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
-
-                throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
-                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
-                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
-            }
-        });
-
-        return res;
-    }
-
     @Override
     public DefaultPluginFactory plugin() {
         return H.onedbDefaultPluginFactory();
@@ -251,6 +187,70 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public LocalServerManager localServers() {
         return localServers;
+    }
+
+    private static GwtRemoteServiceAsync gwtService = null;
+
+    private static GwtRemoteServiceAsync assertGwtService() {
+        if (gwtService != null) {
+            return gwtService;
+        }
+
+        gwtService = GWT.create(GwtRemoteService.class);
+
+        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
+
+        return gwtService;
+    }
+
+    private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
+        CoreDsl res;
+        assert dsl == null;
+
+        res = OneGwt.createDsl(assertGwtService(), "", internalConnection);
+
+        if (!One.isDslInitialized()) {
+            One.setDsl(res);
+        }
+        res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
+
+            @Override
+            public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
+
+                throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
+                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
+                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
+            }
+        });
+
+        return res;
+    }
+
+    /**
+     * 
+     * @param internalConnection
+     *            The connection to be used for all sessions created with this
+     *            engine.
+     */
+    public OnedbNextwebEngineJs(final StoppableRemoteConnection internalConnection) {
+        super();
+        this.exceptionManager = getOnedbFactory().createExceptionManager(null);
+        this.exceptionManager.catchExceptions(new ExceptionListener() {
+
+            @Override
+            public void onFailure(final ExceptionResult r) {
+                throw new RuntimeException("Unhandled exception: " + r.exception().getMessage() + " from object "
+                        + r.origin() + " (" + r.origin().getClass() + ")");
+            }
+        });
+        this.jsFactory = new JsFactory(this);
+
+        this.factories = Factories.create();
+        this.services = Services.create();
+
+        this.dsl = createDsl(internalConnection);
+
+        this.localServers = new LocalServerManager();
     }
 
     @Override
