@@ -174,7 +174,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         if (!One.isDslInitialized()) {
             One.setDsl(res);
         }
-
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
             @Override
