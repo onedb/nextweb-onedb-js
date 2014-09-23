@@ -151,15 +151,25 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.localServers = new LocalServerManager();
     }
 
+    private static GwtRemoteServiceAsync gwtService = null;
+
+    private static GwtRemoteServiceAsync assertGwtService() {
+        if (gwtService != null) {
+            return gwtService;
+        }
+
+        gwtService = GWT.create(GwtRemoteService.class);
+
+        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
+
+        return gwtService;
+    }
+
     private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
         CoreDsl res;
         assert dsl == null;
 
-        final GwtRemoteServiceAsync gwtService = GWT.create(GwtRemoteService.class);
-
-        ((ServiceDefTarget) gwtService).setServiceEntryPoint("/servlets/v01/gwtrpc");
-
-        res = OneGwt.createDsl(gwtService, "", internalConnection);
+        res = OneGwt.createDsl(assertGwtService(), "", internalConnection);
 
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
