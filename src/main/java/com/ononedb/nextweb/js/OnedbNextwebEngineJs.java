@@ -248,6 +248,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         forkedEngine.services = services;
         forkedEngine.startServerCapability = startServerCapability;
         forkedEngine.exceptionManager = exceptionManager;
+        forkedEngine.localServers = localServers;
 
         return forkedEngine;
     }
