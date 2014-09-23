@@ -171,6 +171,10 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         res = OneGwt.createDsl(assertGwtService(), "", internalConnection);
 
+        if (!One.isDslInitialized()) {
+            One.setDsl(res);
+        }
+
         res.getDefaults().getSettings().setDefaultBackgroundListener(new BackgroundListener() {
 
             @Override
