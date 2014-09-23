@@ -248,11 +248,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         this.factories = Factories.create();
         this.services = Services.create();
-        // Console.log("Create Dsl");
         this.dsl = createDsl(internalConnection);
-        // Console.log("dsl created");
         this.localServers = new LocalServerManager();
-        // Console.log("all done");
 
         if (NextwebGlobal.getStartServerCapability() != null) {
             this.startServerCapability = NextwebGlobal.getStartServerCapability();
