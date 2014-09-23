@@ -202,12 +202,12 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public LocalServer startServer(final int port) {
+    public LocalServer startServer(final String domain) {
         if (startServerCapability == null) {
             throw new IllegalStateException("Please inject a StartServerCapability first.");
         }
 
-        return startServerCapability.startServer(port);
+        return startServerCapability.startServer(domain);
     }
 
     @Override
