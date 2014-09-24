@@ -8,9 +8,7 @@ import io.nextweb.engine.Factory;
 import io.nextweb.engine.NextwebEngine;
 import io.nextweb.engine.NextwebGlobal;
 import io.nextweb.engine.StartServerCapability;
-import io.nextweb.js.NextwebJs;
 import io.nextweb.js.engine.JsFactory;
-import io.nextweb.js.engine.JsNextwebEngine;
 import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
@@ -61,17 +59,19 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     public static OnedbNextwebEngineJs init() {
         final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
-        NextwebJs.injectEngine(JsNextwebEngine.wrap(engine));
+        NextwebGlobal.injectEngine(engine);
+
+        // NextwebJs.injectEngine(JsNextwebEngine.wrap(engine));
         One.setDsl(engine.getDsl());
         return engine;
     }
 
     public static OnedbNextwebEngineJs assertInitialized() {
-        if (NextwebJs.getEngine() == null || (!(NextwebJs.getEngine() instanceof JsNextwebEngine))) {
+        if (!NextwebGlobal.isEngineInitialized()) {
             return init();
         }
 
-        return (OnedbNextwebEngineJs) NextwebJs.getEngine().getEngine();
+        return (OnedbNextwebEngineJs) NextwebGlobal.getEngine();
     }
 
     @Override
