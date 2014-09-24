@@ -66,14 +66,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         return engine;
     }
 
-    public static OnedbNextwebEngineJs assertInitialized() {
-        if (!NextwebGlobal.isEngineInitialized()) {
-            return init();
-        }
-
-        return (OnedbNextwebEngineJs) NextwebGlobal.getEngine();
-    }
-
     @Override
     public Session createSession() {
 
