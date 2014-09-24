@@ -57,15 +57,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     protected LocalServerManager localServers;
 
-    public static OnedbNextwebEngineJs init() {
-        final OnedbNextwebEngineJs engine = new OnedbNextwebEngineJs();
-        NextwebGlobal.injectEngine(engine);
-
-        // NextwebJs.injectEngine(JsNextwebEngine.wrap(engine));
-        One.setDsl(engine.getDsl());
-        return engine;
-    }
-
     @Override
     public Session createSession() {
 
