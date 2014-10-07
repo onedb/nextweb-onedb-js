@@ -10,6 +10,7 @@ import io.nextweb.engine.NextwebGlobal;
 import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.NextwebEngineJs;
+import io.nextweb.js.utils.Console;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -223,6 +224,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
             @Override
             public void onFailure(final ExceptionResult r) {
+                Console.log("Unhandled background exception: " + r.exception().getMessage() + " from " + r.origin());
+                Console.log(ExceptionUtils.getStacktrace(r.exception()));
                 throw new RuntimeException(r.exception());
             }
         });
