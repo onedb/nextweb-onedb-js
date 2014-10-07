@@ -224,7 +224,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             @Override
             public void onFailure(final ExceptionResult r) {
 
-                throw r.exception();
             }
         });
         this.jsFactory = new JsFactory(this);
