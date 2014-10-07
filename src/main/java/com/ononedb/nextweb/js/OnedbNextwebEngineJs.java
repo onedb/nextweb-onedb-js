@@ -223,8 +223,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
             @Override
             public void onFailure(final ExceptionResult r) {
-                throw new RuntimeException("Unhandled exception: " + r.exception().getMessage() + " from object "
-                        + r.origin() + " (" + r.origin().getClass() + ")", r.exception());
+
+                throw r.exception();
             }
         });
         this.jsFactory = new JsFactory(this);
