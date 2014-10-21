@@ -201,10 +201,16 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
             @Override
             public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
+                String originTrace;
+                if (origin != null) {
+                    originTrace = "Origin is null.";
+                } else {
+                    originTrace = ExceptionUtils.getStacktrace(origin);
+                }
 
                 throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
                         + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
-                        + " Origin Trace: " + ExceptionUtils.getStacktrace(origin), t);
+                        + " Origin Trace: " + originTrace, t);
             }
         });
 
