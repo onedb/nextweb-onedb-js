@@ -202,7 +202,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             @Override
             public void onBackgroundException(final Object operation, final Throwable t, final Throwable origin) {
                 String originTrace;
-                if (origin != null) {
+                if (origin == null) {
                     originTrace = "Origin is null.";
                 } else {
                     originTrace = ExceptionUtils.getStacktrace(origin);
