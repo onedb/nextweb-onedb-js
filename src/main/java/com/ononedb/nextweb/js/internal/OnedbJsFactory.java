@@ -8,6 +8,8 @@ import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.fn.JsResultImplementation;
 
+import de.mxro.promise.helper.Promise;
+
 public class OnedbJsFactory extends OnedbFactory {
 
     @Override
@@ -16,4 +18,9 @@ public class OnedbJsFactory extends OnedbFactory {
         return new JsResultImplementation<ResultType>(session, exceptionManager, asyncResult);
     }
 
+    @Override
+    public <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
+            final Session session, final NextwebOperation<ResultType> asyncResult) {
+        throw new RuntimeException("Not supported yet.");
+    }
 }
