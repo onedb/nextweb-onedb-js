@@ -2,7 +2,7 @@ package com.ononedb.nextweb.js.fn;
 
 import io.nextweb.Session;
 import io.nextweb.operations.callbacks.CallbackFactory;
-import io.nextweb.promise.Deferred;
+import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.callbacks.Callback;
@@ -29,7 +29,7 @@ import de.mxro.fn.Closure;
 
 public class JsResultImplementation<ResultType> implements NextwebPromise<ResultType> {
 
-	private final Deferred<ResultType> asyncResult;
+	private final NextwebOperation<ResultType> asyncResult;
 
 	private ResultType resultCache;
 
@@ -169,7 +169,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 
 	public JsResultImplementation(final Session session,
 			final ExceptionManager fallbackExceptionManager,
-			final Deferred<ResultType> asyncResult) {
+			final NextwebOperation<ResultType> asyncResult) {
 		super();
 		assert asyncResult != null;
 		this.session = session;
@@ -219,7 +219,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	@Override
-	public Deferred<ResultType> getDecoratedResult() {
+	public NextwebOperation<ResultType> getDecoratedResult() {
 
 		return this.asyncResult;
 	}

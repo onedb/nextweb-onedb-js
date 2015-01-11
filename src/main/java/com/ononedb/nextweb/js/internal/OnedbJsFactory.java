@@ -1,7 +1,7 @@
 package com.ononedb.nextweb.js.internal;
 
 import io.nextweb.Session;
-import io.nextweb.promise.Deferred;
+import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.ExceptionManager;
 
@@ -13,7 +13,7 @@ public class OnedbJsFactory extends OnedbFactory {
 	@Override
 	public <ResultType> NextwebPromise<ResultType> createResult(
 			final ExceptionManager exceptionManager, final Session session,
-			final Deferred<ResultType> asyncResult) {
+			final NextwebOperation<ResultType> asyncResult) {
 		return new JsResultImplementation<ResultType>(session,
 				exceptionManager, asyncResult);
 	}
