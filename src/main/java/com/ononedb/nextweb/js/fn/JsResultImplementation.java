@@ -219,7 +219,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	@Override
-	public NextwebOperation<ResultType> getDecoratedResult() {
+	public NextwebOperation<ResultType> getOriginalOperation() {
 
 		return this.asyncResult;
 	}
