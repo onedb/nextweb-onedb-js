@@ -8,7 +8,7 @@ import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import com.ononedb.nextweb.common.OnedbFactory;
 import com.ononedb.nextweb.js.fn.JsResultImplementation;
 
-import de.mxro.promise.helper.Promise;
+import de.mxro.promise.Promise;
 
 public class OnedbJsFactory extends OnedbFactory {
 
