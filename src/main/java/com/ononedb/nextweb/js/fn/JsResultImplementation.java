@@ -7,7 +7,7 @@ import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.callbacks.Callback;
 import io.nextweb.promise.exceptions.ExceptionListener;
-import io.nextweb.promise.exceptions.ExceptionManager;
+import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.promise.exceptions.ImpossibleListener;
 import io.nextweb.promise.exceptions.ImpossibleResult;
@@ -33,7 +33,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 
 	private ResultType resultCache;
 
-	private final ExceptionManager exceptionManager;
+	private final NextwebExceptionManager exceptionManager;
 
 	private boolean requestingResult;
 
@@ -140,7 +140,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	@Override
-	public ExceptionManager getExceptionManager() {
+	public NextwebExceptionManager getExceptionManager() {
 		return exceptionManager;
 	}
 
@@ -168,14 +168,14 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	public JsResultImplementation(final Session session,
-			final ExceptionManager fallbackExceptionManager,
+			final NextwebExceptionManager fallbackExceptionManager,
 			final NextwebOperation<ResultType> asyncResult) {
 		super();
 		assert asyncResult != null;
 		this.session = session;
 		this.asyncResult = asyncResult;
 		this.resultCache = null;
-		this.exceptionManager = new ExceptionManager(fallbackExceptionManager);
+		this.exceptionManager = new NextwebExceptionManager(fallbackExceptionManager);
 		this.requestingResult = false;
 		this.deferredCalls = new LinkedList<Callback<ResultType>>();
 	}
