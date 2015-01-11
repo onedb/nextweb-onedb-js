@@ -5,7 +5,7 @@ import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebPromise;
-import io.nextweb.promise.callbacks.Callback;
+import io.nextweb.promise.callbacks.NextwebCallback;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
@@ -37,11 +37,11 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 
 	private boolean requestingResult;
 
-	private final List<Callback<ResultType>> deferredCalls;
+	private final List<NextwebCallback<ResultType>> deferredCalls;
 
 	private final Session session;
 
-	private void requestResult(final Callback<ResultType> callback) {
+	private void requestResult(final NextwebCallback<ResultType> callback) {
 
 		if (resultCache != null) {
 			callback.onSuccess(resultCache);
@@ -65,7 +65,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 								requestingResult = false;
 								callback.onSuccess(result);
 
-								for (final Callback<ResultType> deferredCallback : deferredCalls) {
+								for (final NextwebCallback<ResultType> deferredCallback : deferredCalls) {
 									deferredCallback.onSuccess(result);
 								}
 								deferredCalls.clear();
@@ -77,7 +77,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 					public void onFailure(final ExceptionResult r) {
 						requestingResult = false;
 						callback.onFailure(r);
-						for (final Callback<ResultType> deferredCallback : deferredCalls) {
+						for (final NextwebCallback<ResultType> deferredCallback : deferredCalls) {
 							deferredCallback.onFailure(r);
 						}
 						deferredCalls.clear();
@@ -88,7 +88,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 					public void onUnauthorized(final UnauthorizedResult r) {
 						requestingResult = false;
 						callback.onUnauthorized(r);
-						for (final Callback<ResultType> deferredCallback : deferredCalls) {
+						for (final NextwebCallback<ResultType> deferredCallback : deferredCalls) {
 							deferredCallback.onUnauthorized(r);
 						}
 						deferredCalls.clear();
@@ -99,7 +99,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 					public void onUndefined(final UndefinedResult r) {
 						requestingResult = false;
 						callback.onUndefined(r);
-						for (final Callback<ResultType> deferredCallback : deferredCalls) {
+						for (final NextwebCallback<ResultType> deferredCallback : deferredCalls) {
 							deferredCallback.onUndefined(r);
 						}
 						deferredCalls.clear();
@@ -110,7 +110,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 					public void onImpossible(final ImpossibleResult ir) {
 						requestingResult = false;
 						callback.onImpossible(ir);
-						for (final Callback<ResultType> deferredCallback : deferredCalls) {
+						for (final NextwebCallback<ResultType> deferredCallback : deferredCalls) {
 							deferredCallback.onImpossible(ir);
 						}
 						deferredCalls.clear();
@@ -145,7 +145,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	@Override
-	public void apply(final Callback<ResultType> callback) {
+	public void apply(final NextwebCallback<ResultType> callback) {
 		requestResult(callback);
 	}
 
@@ -177,7 +177,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 		this.resultCache = null;
 		this.exceptionManager = new NextwebExceptionManager(fallbackExceptionManager);
 		this.requestingResult = false;
-		this.deferredCalls = new LinkedList<Callback<ResultType>>();
+		this.deferredCalls = new LinkedList<NextwebCallback<ResultType>>();
 	}
 
 	@Override
