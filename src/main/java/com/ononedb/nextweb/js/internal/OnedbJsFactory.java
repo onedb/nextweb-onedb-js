@@ -10,12 +10,10 @@ import com.ononedb.nextweb.js.fn.JsResultImplementation;
 
 public class OnedbJsFactory extends OnedbFactory {
 
-	@Override
-	public <ResultType> NextwebPromise<ResultType> createResult(
-			final NextwebExceptionManager exceptionManager, final Session session,
-			final NextwebOperation<ResultType> asyncResult) {
-		return new JsResultImplementation<ResultType>(session,
-				exceptionManager, asyncResult);
-	}
+    @Override
+    public <ResultType> NextwebPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
+            final Session session, final NextwebOperation<ResultType> asyncResult) {
+        return new JsResultImplementation<ResultType>(session, exceptionManager, asyncResult);
+    }
 
 }
