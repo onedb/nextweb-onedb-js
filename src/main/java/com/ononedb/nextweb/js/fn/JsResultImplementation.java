@@ -55,7 +55,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 
 		requestingResult = true;
 
-		asyncResult.get(CallbackFactory
+		asyncResult.apply(CallbackFactory
 				.eagerCallback(session, exceptionManager,
 						new Closure<ResultType>() {
 
@@ -145,7 +145,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 	}
 
 	@Override
-	public void get(final Callback<ResultType> callback) {
+	public void apply(final Callback<ResultType> callback) {
 		requestResult(callback);
 	}
 
@@ -182,7 +182,7 @@ public class JsResultImplementation<ResultType> implements NextwebPromise<Result
 
 	@Override
 	public void get(final Closure<ResultType> callback) {
-		get(CallbackFactory.lazyCallback(session, exceptionManager,
+		apply(CallbackFactory.lazyCallback(session, exceptionManager,
 				new Closure<ResultType>() {
 
 					@Override
