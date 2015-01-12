@@ -14,7 +14,7 @@ import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.fn.Closure;
 import de.mxro.promise.Promise;
-import de.mxro.promise.PromiseCommon;
+import de.mxro.promise.PromisesCommon;
 
 public class OnedbJsFactory extends OnedbFactory {
 
@@ -27,7 +27,7 @@ public class OnedbJsFactory extends OnedbFactory {
     private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
             final Session session, final NextwebOperation<ResultType> operation) {
 
-        final Promise<ResultType> promise = PromiseCommon.create(new Operation<ResultType>() {
+        final Promise<ResultType> promise = PromisesCommon.createUnsafe(new Operation<ResultType>() {
 
             @Override
             public String toString() {
