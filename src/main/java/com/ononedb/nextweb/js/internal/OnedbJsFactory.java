@@ -45,20 +45,13 @@ public class OnedbJsFactory extends OnedbFactory {
             }
         });
 
-        if (exceptionManager.canCatchExceptions() || exceptionManager.canCatchImpossibe()
-                || exceptionManager.canCatchAuthorizationExceptions() || exceptionManager.canCatchUndefinedExceptions()) {
+        promise.addExceptionFallback(new Closure<Throwable>() {
 
-            promise.catchExceptions(new Closure<Throwable>() {
-
-                @Override
-                public void apply(final Throwable o) {
-
-                    exceptionManager.onFailure(Fn.exception(this, o));
-
-                }
-
-            });
-        }
+            @Override
+            public void apply(final Throwable o) {
+                exceptionManager.onFailure(Fn.exception(this, o));
+            }
+        });
 
         return promise;
     }
