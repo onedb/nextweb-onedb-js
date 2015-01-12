@@ -7,8 +7,8 @@ import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
 
+import com.ononedb.nextweb.common.NextwebPromiseImplNew;
 import com.ononedb.nextweb.common.OnedbFactory;
-import com.ononedb.nextweb.jre.NextwebPromiseImplNew;
 
 import de.mxro.async.Operation;
 import de.mxro.async.callbacks.ValueCallback;
