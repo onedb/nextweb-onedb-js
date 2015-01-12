@@ -18,8 +18,7 @@ public class OnedbJsFactory extends OnedbFactory {
         return new JsResultImplementation<ResultType>(session, exceptionManager, asyncResult);
     }
 
-    @Override
-    public <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
+    private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
             final Session session, final NextwebOperation<ResultType> asyncResult) {
         throw new RuntimeException("Not supported yet.");
     }
