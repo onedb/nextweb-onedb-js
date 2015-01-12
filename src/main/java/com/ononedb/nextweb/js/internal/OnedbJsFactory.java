@@ -7,7 +7,7 @@ import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
 
-import com.ononedb.nextweb.common.NextwebPromiseImplNew;
+import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
 import de.mxro.async.Operation;
@@ -24,10 +24,8 @@ public class OnedbJsFactory extends OnedbFactory {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
 
-        return new NextwebPromiseImplNew<ResultType>(asyncResult, promise, exceptionManager, session);
+        return new NextwebPromiseImpl<ResultType>(asyncResult, promise, exceptionManager, session);
 
-        // return new JsResultImplementation<ResultType>(session,
-        // exceptionManager, asyncResult);
     }
 
     private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
