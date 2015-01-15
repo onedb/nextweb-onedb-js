@@ -11,8 +11,8 @@ import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
-import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionResult;
+import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.js.Console;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
@@ -34,9 +34,8 @@ import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.local.LocalServerManager;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
+import de.mxro.client.Client;
 import de.mxro.factories.Factories;
-import de.mxro.factories.FactoryCollection;
-import de.mxro.service.ServiceRegistry;
 import de.mxro.service.Services;
 
 /**
@@ -51,10 +50,10 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     private final CoreDsl dsl;
 
     private final JsFactory jsFactory;
+
+    protected Client client;
     protected NextwebExceptionManager exceptionManager;
     protected StartServerCapability startServerCapability;
-    protected FactoryCollection factories;
-    protected ServiceRegistry services;
 
     protected LocalServerManager localServers;
 
@@ -93,16 +92,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public Factory getFactory() {
         return new OnedbJsFactory();
-    }
-
-    @Override
-    public FactoryCollection factories() {
-        return factories;
-    }
-
-    @Override
-    public ServiceRegistry services() {
-        return services;
     }
 
     public OnedbNextwebEngineJs() {
