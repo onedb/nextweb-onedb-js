@@ -35,8 +35,7 @@ import com.ononedb.nextweb.local.LocalServerManager;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
 import de.mxro.client.Client;
-import de.mxro.factories.Factories;
-import de.mxro.service.Services;
+import de.mxro.client.ClientsCommon;
 
 /**
  * <p>
@@ -229,8 +228,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         });
         this.jsFactory = new JsFactory(this);
 
-        this.factories = Factories.create();
-        this.services = Services.create();
         this.dsl = createDsl(internalConnection);
         this.localServers = new LocalServerManager();
 
@@ -243,13 +240,20 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     public OnedbNextwebEngine fork(final StoppableRemoteConnection internalConnection) {
         final OnedbNextwebEngineJs forkedEngine = new OnedbNextwebEngineJs(internalConnection);
 
-        forkedEngine.factories = factories;
-        forkedEngine.services = services;
+        forkedEngine.client = client;
         forkedEngine.startServerCapability = startServerCapability;
         forkedEngine.exceptionManager = exceptionManager;
         forkedEngine.localServers = localServers;
 
         return forkedEngine;
+    }
+
+    @Override
+    public Client client() {
+        if (this.client == null) {
+            this.client = ClientsCommon.createPortable();
+        }
+        return this.client;
     }
 
 }
