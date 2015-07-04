@@ -10,11 +10,11 @@ import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
-import de.mxro.async.Operation;
-import de.mxro.async.callbacks.ValueCallback;
 import de.mxro.fn.Closure;
 import de.mxro.promise.Promise;
 import de.mxro.promise.PromisesCommon;
+import delight.async.Operation;
+import delight.async.callbacks.ValueCallback;
 
 public class OnedbJsFactory extends OnedbFactory {
 
