@@ -1,20 +1,19 @@
 package com.ononedb.nextweb.js.internal;
 
+import com.ononedb.nextweb.common.NextwebPromiseImpl;
+import com.ononedb.nextweb.common.OnedbFactory;
+
+import de.mxro.promise.Promise;
+import de.mxro.promise.PromisesCommon;
+import delight.async.Operation;
+import delight.async.callbacks.ValueCallback;
+import delight.functional.Closure;
 import io.nextweb.Session;
 import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
-
-import com.ononedb.nextweb.common.NextwebPromiseImpl;
-import com.ononedb.nextweb.common.OnedbFactory;
-
-import de.mxro.fn.Closure;
-import de.mxro.promise.Promise;
-import de.mxro.promise.PromisesCommon;
-import delight.async.Operation;
-import delight.async.callbacks.ValueCallback;
 
 public class OnedbJsFactory extends OnedbFactory {
 
