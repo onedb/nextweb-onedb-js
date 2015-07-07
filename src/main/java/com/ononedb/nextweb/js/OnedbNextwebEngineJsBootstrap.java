@@ -1,6 +1,7 @@
 package com.ononedb.nextweb.js;
 
-import io.nextweb.engine.NextwebGlobal;
+import com.appjangle.api.engine.NextwebGlobal;
+
 import one.common.One;
 
 public class OnedbNextwebEngineJsBootstrap {

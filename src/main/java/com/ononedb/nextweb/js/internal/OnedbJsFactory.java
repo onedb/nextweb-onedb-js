@@ -6,11 +6,11 @@ import delight.functional.Closure;
 import delight.promise.Promise;
 import delight.promise.PromisesCommon;
 
+import com.appjangle.api.Client;
+import com.appjangle.api.operations.callbacks.CallbackFactory;
 import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
-import io.nextweb.Client;
-import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;

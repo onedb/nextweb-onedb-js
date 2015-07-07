@@ -1,5 +1,13 @@
 package com.ononedb.nextweb.js;
 
+import com.appjangle.api.Client;
+import com.appjangle.api.common.LocalServer;
+import com.appjangle.api.common.SessionConfiguration;
+import com.appjangle.api.engine.Capability;
+import com.appjangle.api.engine.Factory;
+import com.appjangle.api.engine.NextwebEngine;
+import com.appjangle.api.engine.NextwebGlobal;
+import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.OnedbNextwebEngine;
@@ -11,14 +19,6 @@ import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
 import de.mxro.client.BasicClient;
 import de.mxro.client.ClientsCommon;
-import io.nextweb.Client;
-import io.nextweb.common.LocalServer;
-import io.nextweb.common.SessionConfiguration;
-import io.nextweb.engine.Capability;
-import io.nextweb.engine.Factory;
-import io.nextweb.engine.NextwebEngine;
-import io.nextweb.engine.NextwebGlobal;
-import io.nextweb.engine.StartServerCapability;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
