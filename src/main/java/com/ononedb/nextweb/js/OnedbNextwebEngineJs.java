@@ -9,7 +9,7 @@ import com.ononedb.nextweb.js.internal.OnedbJsFactory;
 import com.ononedb.nextweb.local.LocalServerManager;
 import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
-import de.mxro.client.Client;
+import de.mxro.client.BasicClient;
 import de.mxro.client.ClientsCommon;
 import io.nextweb.Session;
 import io.nextweb.common.LocalServer;
@@ -49,7 +49,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     private final JsFactory jsFactory;
 
-    protected Client client;
+    protected BasicClient client;
     protected NextwebExceptionManager exceptionManager;
     protected StartServerCapability startServerCapability;
 
@@ -248,7 +248,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public Client client() {
+    public BasicClient client() {
         if (this.client == null) {
             this.client = ClientsCommon.createPortable();
         }
