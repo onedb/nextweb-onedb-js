@@ -6,7 +6,7 @@ import com.appjangle.api.common.SessionConfiguration;
 import com.appjangle.api.engine.Capability;
 import com.appjangle.api.engine.Factory;
 import com.appjangle.api.engine.NextwebEngine;
-import com.appjangle.api.engine.NextwebGlobal;
+import com.appjangle.api.engine.AppjangleGlobal;
 import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
@@ -56,7 +56,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     protected LocalServerManager localServers;
 
     @Override
-    public Client createSession() {
+    public Client createClient() {
 
         final CoreDsl dsl = this.dsl;
 
@@ -230,8 +230,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.dsl = createDsl(internalConnection);
         this.localServers = new LocalServerManager();
 
-        if (NextwebGlobal.getStartServerCapability() != null) {
-            this.startServerCapability = NextwebGlobal.getStartServerCapability();
+        if (AppjangleGlobal.getStartServerCapability() != null) {
+            this.startServerCapability = AppjangleGlobal.getStartServerCapability();
         }
     }
 
