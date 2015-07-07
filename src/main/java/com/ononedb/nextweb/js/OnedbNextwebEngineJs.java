@@ -11,7 +11,7 @@ import com.ononedb.nextweb.plugins.DefaultPluginFactory;
 
 import de.mxro.client.BasicClient;
 import de.mxro.client.ClientsCommon;
-import io.nextweb.Session;
+import io.nextweb.Client;
 import io.nextweb.common.LocalServer;
 import io.nextweb.common.SessionConfiguration;
 import io.nextweb.engine.Capability;
@@ -56,7 +56,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     protected LocalServerManager localServers;
 
     @Override
-    public Session createSession() {
+    public Client createSession() {
 
         final CoreDsl dsl = this.dsl;
 
@@ -70,7 +70,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public Session createSession(final SessionConfiguration configuration) {
+    public Client createSession(final SessionConfiguration configuration) {
         final CoreDsl dsl = this.dsl;
 
         return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
@@ -107,7 +107,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public void runSafe(final Session forSession, final Runnable task) {
+    public void runSafe(final Client forSession, final Runnable task) {
         task.run(); // no multi-threading in JS assured.
     }
 

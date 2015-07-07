@@ -9,7 +9,7 @@ import delight.promise.PromisesCommon;
 import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
-import io.nextweb.Session;
+import io.nextweb.Client;
 import io.nextweb.operations.callbacks.CallbackFactory;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
@@ -20,7 +20,7 @@ public class OnedbJsFactory extends OnedbFactory {
 
     @Override
     public <ResultType> NextwebPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
-            final Session session, final NextwebOperation<ResultType> asyncResult) {
+            final Client session, final NextwebOperation<ResultType> asyncResult) {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
 
@@ -29,7 +29,7 @@ public class OnedbJsFactory extends OnedbFactory {
     }
 
     private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
-            final Session session, final NextwebOperation<ResultType> operation) {
+            final Client session, final NextwebOperation<ResultType> operation) {
 
         final Promise<ResultType> promise = PromisesCommon.createUnsafe(new Operation<ResultType>() {
 
