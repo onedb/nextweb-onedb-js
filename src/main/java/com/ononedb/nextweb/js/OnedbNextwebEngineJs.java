@@ -5,7 +5,7 @@ import com.appjangle.api.common.LocalServer;
 import com.appjangle.api.common.SessionConfiguration;
 import com.appjangle.api.engine.Capability;
 import com.appjangle.api.engine.Factory;
-import com.appjangle.api.engine.NextwebEngine;
+import com.appjangle.api.engine.AppjangleEngine;
 import com.appjangle.api.engine.AppjangleGlobal;
 import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
@@ -38,7 +38,7 @@ import one.core.dsl.CoreDsl;
 
 /**
  * <p>
- * The onedb implementation of a {@link NextwebEngine}.
+ * The onedb implementation of a {@link AppjangleEngine}.
  * 
  * @author <a href="http://www.mxro.de">Max Rohde</a>
  *
