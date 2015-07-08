@@ -2,7 +2,7 @@ package com.ononedb.nextweb.js;
 
 import com.appjangle.api.Client;
 import com.appjangle.api.common.LocalServer;
-import com.appjangle.api.common.SessionConfiguration;
+import com.appjangle.api.common.ClientConfiguration;
 import com.appjangle.api.engine.Capability;
 import com.appjangle.api.engine.Factory;
 import com.appjangle.api.engine.AppjangleEngine;
@@ -70,7 +70,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public Client createSession(final SessionConfiguration configuration) {
+    public Client createClient(final ClientConfiguration configuration) {
         final CoreDsl dsl = this.dsl;
 
         return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
@@ -88,7 +88,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public Factory getFactory() {
+    public Factory factory() {
         return new OnedbJsFactory();
     }
 
