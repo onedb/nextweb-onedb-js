@@ -30,7 +30,7 @@ import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
 import nx.remote.DeprecatedRemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
-import nx.remote.StoppableRemoteConnection;
+import nx.remote.RemoteConnection;
 import one.client.gwt.OneGwt;
 import one.common.One;
 import one.core.domain.BackgroundListener;
@@ -175,7 +175,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         return gwtService;
     }
 
-    private final CoreDsl createDsl(final StoppableRemoteConnection internalConnection) {
+    private final CoreDsl createDsl(final RemoteConnection internalConnection) {
         CoreDsl res;
         assert dsl == null;
 
@@ -210,7 +210,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
      *            The connection to be used for all sessions created with this
      *            engine.
      */
-    public OnedbNextwebEngineJs(final StoppableRemoteConnection internalConnection) {
+    public OnedbNextwebEngineJs(final RemoteConnection internalConnection) {
         super();
         this.exceptionManager = getOnedbFactory().createExceptionManager(null);
         this.exceptionManager.catchExceptions(new ExceptionListener() {
@@ -236,7 +236,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public OnedbNextwebEngine fork(final StoppableRemoteConnection internalConnection) {
+    public OnedbNextwebEngine fork(final RemoteConnection internalConnection) {
         final OnedbNextwebEngineJs forkedEngine = new OnedbNextwebEngineJs(internalConnection);
 
         forkedEngine.client = client;
