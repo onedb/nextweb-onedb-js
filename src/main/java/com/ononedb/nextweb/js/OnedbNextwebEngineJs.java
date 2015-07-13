@@ -28,7 +28,7 @@ import io.nextweb.promise.js.Console;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
-import nx.remote.RemoteConnection;
+import nx.remote.DeprecatedRemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
 import nx.remote.StoppableRemoteConnection;
 import one.client.gwt.OneGwt;
@@ -152,7 +152,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public RemoteConnection createRemoteConnection() {
+    public DeprecatedRemoteConnection createRemoteConnection() {
         return OneGwt.createRemoteConnection();
     }
 
