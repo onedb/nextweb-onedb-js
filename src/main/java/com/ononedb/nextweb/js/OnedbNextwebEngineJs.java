@@ -1,11 +1,14 @@
 package com.ononedb.nextweb.js;
 
+import delight.rpc.DeprecatedRemoteConnection;
+import delight.rpc.RemoteConnection;
+
 import com.appjangle.api.Client;
 import com.appjangle.api.common.LocalServer;
 import com.appjangle.api.common.ClientConfiguration;
 import com.appjangle.api.engine.Capability;
 import com.appjangle.api.engine.Factory;
-import com.appjangle.api.engine.AppjangleEngine;
+import com.appjangle.api.engine.AppjangleClientEngine;
 import com.appjangle.api.engine.AppjangleGlobal;
 import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
@@ -28,9 +31,7 @@ import io.nextweb.promise.js.Console;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
-import nx.remote.DeprecatedRemoteConnection;
 import nx.remote.RemoteConnectionDecorator;
-import nx.remote.RemoteConnection;
 import one.client.gwt.OneGwt;
 import one.common.One;
 import one.core.domain.BackgroundListener;
@@ -38,7 +39,7 @@ import one.core.dsl.CoreDsl;
 
 /**
  * <p>
- * The onedb implementation of a {@link AppjangleEngine}.
+ * The onedb implementation of a {@link AppjangleClientEngine}.
  * 
  * @author <a href="http://www.mxro.de">Max Rohde</a>
  *
