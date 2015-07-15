@@ -4,12 +4,12 @@ import delight.rpc.DeprecatedRemoteConnection;
 import delight.rpc.RemoteConnection;
 
 import com.appjangle.api.Client;
-import com.appjangle.api.common.LocalServer;
 import com.appjangle.api.common.ClientConfiguration;
-import com.appjangle.api.engine.Capability;
-import com.appjangle.api.engine.Factory;
+import com.appjangle.api.common.LocalServer;
 import com.appjangle.api.engine.AppjangleClientEngine;
 import com.appjangle.api.engine.AppjangleGlobal;
+import com.appjangle.api.engine.Capability;
+import com.appjangle.api.engine.Factory;
 import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
@@ -78,6 +78,23 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
+    public Client createClient(final RemoteConnection connection) {
+        if (connection == null) {
+            throw new NullPointerException("connection must not be null.");
+        }
+
+        final ClientConfiguration configuration = new ClientConfiguration() {
+
+            @Override
+            public RemoteConnection remoteConnection() {
+                return connection;
+            }
+
+        };
+        return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
+    }
+
+    @Override
     public NextwebExceptionManager getExceptionManager() {
 
         return exceptionManager;
@@ -124,8 +141,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             return;
         }
 
-        throw new IllegalArgumentException("This engine cannot recognize the capability: [" + capability.getClass()
-                + "]");
+        throw new IllegalArgumentException(
+                "This engine cannot recognize the capability: [" + capability.getClass() + "]");
     }
 
     @Override
