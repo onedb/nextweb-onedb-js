@@ -273,4 +273,9 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         return this.client;
     }
 
+    @Override
+    public void setAddressMapping(final String nodeUri, final String serverUri) {
+        throw new RuntimeException("Operation not suppored on JavaScript.");
+    }
+
 }
