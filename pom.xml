@@ -48,9 +48,6 @@
 		</dependency>
 
 
-
-		<!-- only for gwt maven plugin!!! -->
-		<!-- only for gwt maven plugin!!! -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
@@ -145,7 +142,7 @@
 				<configuration>
 					<!-- <runTarget>onedbtest.html</runTarget> -->
 					<draftCompile>${module.draftCompile}</draftCompile>
-					<logLevel>TRACE</logLevel>
+					<logLevel>DEBUG</logLevel>
 					
 					<validateOnly>true</validateOnly>
 					<gwtVersion>${gwtVersion}</gwtVersion>
