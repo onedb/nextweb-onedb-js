@@ -145,7 +145,8 @@
 				<configuration>
 					<!-- <runTarget>onedbtest.html</runTarget> -->
 					<draftCompile>${module.draftCompile}</draftCompile>
-					<logLevel>INFO</logLevel>
+					<logLevel>TRACE</logLevel>
+					
 					<validateOnly>true</validateOnly>
 					<gwtVersion>${gwtVersion}</gwtVersion>
 
