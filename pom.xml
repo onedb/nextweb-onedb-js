@@ -9,7 +9,7 @@
 	<url>http://ononedb.com</url>
 	<properties>
 
-		<gwtVersion>2.5.1</gwtVersion>
+		<gwtVersion>2.7.0</gwtVersion>
 		<module.draftCompile>true</module.draftCompile>
 		<module.importedPackages>
 			org.junit,
@@ -50,13 +50,13 @@
 
 
 		<!-- only for gwt maven plugin!!! -->
+		<!-- only for gwt maven plugin!!! -->
 		<dependency>
-			<groupId>de.mxro.thrd.gwtuser251</groupId>
-			<artifactId>thrdGWTUser251</artifactId>
-			<version>[0.0.1,)</version>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
 			<scope>provided</scope>
 		</dependency>
-
 
 
 		<dependency>
