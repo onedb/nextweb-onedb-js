@@ -1,5 +1,6 @@
 package com.ononedb.nextweb.js;
 
+import delight.concurrency.gwt.ConcurrencyGwt;
 import delight.rpc.DeprecatedRemoteConnection;
 import delight.rpc.RemoteConnection;
 
@@ -269,6 +270,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     public BasicClient client() {
         if (this.client == null) {
             this.client = ClientsCommon.createPortable();
+
+            this.client.factories().register(ConcurrencyGwt.createFactory());
         }
         return this.client;
     }
