@@ -7,7 +7,7 @@ import delight.promise.Promise;
 import delight.promise.PromisesCommon;
 
 import com.appjangle.api.Client;
-import com.appjangle.api.operations.callbacks.CallbackFactory;
+import com.appjangle.api.utils.CallbackFactory;
 import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
