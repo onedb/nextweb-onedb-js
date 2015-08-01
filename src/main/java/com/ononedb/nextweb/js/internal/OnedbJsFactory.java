@@ -14,7 +14,7 @@ import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
-import io.nextweb.promise.utils.CallbackFactory;
+import io.nextweb.promise.utils.AsyncUtils;
 
 public class OnedbJsFactory extends OnedbFactory {
 
@@ -40,7 +40,7 @@ public class OnedbJsFactory extends OnedbFactory {
 
             @Override
             public void apply(final ValueCallback<ResultType> callback) {
-                operation.apply(CallbackFactory.wrap(callback));
+                operation.apply(AsyncUtils.wrap(callback));
 
             }
         });
