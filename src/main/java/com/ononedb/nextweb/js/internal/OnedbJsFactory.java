@@ -7,7 +7,6 @@ import delight.promise.Promise;
 import delight.promise.PromisesCommon;
 
 import com.appjangle.api.Client;
-import com.appjangle.api.utils.CallbackFactory;
 import com.ononedb.nextweb.common.NextwebPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
@@ -15,6 +14,7 @@ import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
 import io.nextweb.promise.NextwebPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
+import io.nextweb.promise.utils.CallbackFactory;
 
 public class OnedbJsFactory extends OnedbFactory {
 
