@@ -33,6 +33,9 @@ import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
 import nx.remote.RemoteConnectionDecorator;
+import nx.remote.connections.StringConnection;
+import nx.rpcclientgwt.GwtConnectionConfiguration;
+import nx.rpcclientgwt.GwtRpc;
 import one.client.gwt.OneGwt;
 import one.common.One;
 import one.core.domain.BackgroundListener;
@@ -93,6 +96,13 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         };
         return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
+    }
+
+    @Override
+    public Client createClient(final StringConnection stringConnection) {
+
+        return createClient(GwtRpc.createLocalConnection(new GwtConnectionConfiguration() {
+        }, stringConnection));
     }
 
     @Override
