@@ -1,6 +1,7 @@
 package com.ononedb.nextweb.js;
 
 import delight.concurrency.gwt.ConcurrencyGwt;
+import delight.gwt.console.Console;
 import delight.rpc.DeprecatedRemoteConnection;
 import delight.rpc.RemoteConnection;
 
@@ -28,7 +29,6 @@ import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
-import io.nextweb.promise.js.Console;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
