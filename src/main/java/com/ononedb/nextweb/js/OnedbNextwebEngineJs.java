@@ -223,7 +223,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.dsl = createDsl(internalConnection);
 
         if (AppjangleGlobal.getStartServerCapability() != null) {
-            this.startServerCapability = AppjangleGlobal.getStartServerCapability();
+            internal().injectCapability(AppjangleGlobal.getStartServerCapability());
+
         }
     }
 
