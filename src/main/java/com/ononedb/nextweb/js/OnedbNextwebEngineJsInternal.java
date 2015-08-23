@@ -41,4 +41,15 @@ public class OnedbNextwebEngineJsInternal implements AppjangleClientEngineIntern
 
         return true;
     }
+
+    public OnedbNextwebEngineJsInternal() {
+        super();
+        this.localServers = new LocalServerManager();
+    }
+
+    public LocalServerManager localServers() {
+
+        return localServers;
+    }
+
 }
