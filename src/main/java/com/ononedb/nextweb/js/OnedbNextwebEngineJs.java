@@ -7,12 +7,10 @@ import delight.rpc.RemoteConnection;
 
 import com.appjangle.api.Client;
 import com.appjangle.api.common.ClientConfiguration;
-import com.appjangle.api.common.LocalServer;
 import com.appjangle.api.engine.AppjangleClientEngine;
+import com.appjangle.api.engine.AppjangleClientEngineInternal;
 import com.appjangle.api.engine.AppjangleGlobal;
-import com.appjangle.api.engine.Capability;
 import com.appjangle.api.engine.Factory;
-import com.appjangle.api.engine.StartServerCapability;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.OnedbNextwebEngine;
@@ -56,9 +54,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     protected BasicClient client;
     protected NextwebExceptionManager exceptionManager;
-    protected StartServerCapability startServerCapability;
-
-    protected LocalServerManager localServers;
 
     @Override
     public Client createClient() {
@@ -66,12 +61,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         final CoreDsl dsl = this.dsl;
 
         return getOnedbFactory().createSession(this, dsl.createClient(), null);
-    }
-
-    @Override
-    public boolean hasPersistedReplicationCapability() {
-
-        return true;
     }
 
     @Override
@@ -138,31 +127,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public void runSafe(final Client forSession, final Runnable task) {
         task.run(); // no multi-threading in JS assured.
-    }
-
-    @Override
-    public boolean hasStartServerCapability() {
-        return startServerCapability != null;
-    }
-
-    @Override
-    public void injectCapability(final Capability capability) {
-        if (capability instanceof StartServerCapability) {
-            startServerCapability = (StartServerCapability) capability;
-            return;
-        }
-
-        throw new IllegalArgumentException(
-                "This engine cannot recognize the capability: [" + capability.getClass() + "]");
-    }
-
-    @Override
-    public LocalServer startServer(final String domain) {
-        if (startServerCapability == null) {
-            throw new IllegalStateException("Please inject a StartServerCapability first.");
-        }
-
-        return startServerCapability.startServer(domain);
     }
 
     @Override
@@ -257,7 +221,6 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         this.jsFactory = new JsFactory(this);
 
         this.dsl = createDsl(internalConnection);
-        this.localServers = new LocalServerManager();
 
         if (AppjangleGlobal.getStartServerCapability() != null) {
             this.startServerCapability = AppjangleGlobal.getStartServerCapability();
@@ -269,9 +232,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
         final OnedbNextwebEngineJs forkedEngine = new OnedbNextwebEngineJs(internalConnection);
 
         forkedEngine.client = client;
-        forkedEngine.startServerCapability = startServerCapability;
+        forkedEngine.internal = internal;
         forkedEngine.exceptionManager = exceptionManager;
-        forkedEngine.localServers = localServers;
 
         return forkedEngine;
     }
@@ -289,6 +251,16 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     @Override
     public void setAddressMapping(final String nodeUri, final String serverUri) {
         throw new RuntimeException("Operation not suppored on JavaScript.");
+    }
+
+    OnedbNextwebEngineJsInternal internal = null;
+
+    @Override
+    public AppjangleClientEngineInternal internal() {
+        if (internal == null) {
+            internal = new OnedbNextwebEngineJsInternal();
+        }
+        return internal;
     }
 
 }
