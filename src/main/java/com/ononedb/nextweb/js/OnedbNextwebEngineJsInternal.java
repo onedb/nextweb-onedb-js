@@ -52,4 +52,13 @@ public class OnedbNextwebEngineJsInternal implements AppjangleClientEngineIntern
         return localServers;
     }
 
+    @Override
+    public LocalServer startServer(final String domain, final Object folder) {
+        if (startServerCapability == null) {
+            throw new IllegalStateException("Please inject a StartServerCapability first.");
+        }
+
+        return startServerCapability.startServer(domain, folder);
+    }
+
 }
