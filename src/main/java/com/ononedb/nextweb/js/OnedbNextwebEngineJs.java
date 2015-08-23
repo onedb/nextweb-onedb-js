@@ -151,7 +151,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
     @Override
     public LocalServerManager localServers() {
-        return localServers;
+        return this.internal().localServers();
     }
 
     private static GwtRemoteServiceAsync gwtService = null;
