@@ -40,7 +40,7 @@ public class OnedbJsFactory extends OnedbFactory {
 
             @Override
             public void apply(final ValueCallback<ResultType> callback) {
-                operation.apply(CallbackUtils.wrap(exceptionManager, callback));
+                operation.apply(CallbackUtils.asNextwebCallback(exceptionManager, callback));
 
             }
         });
