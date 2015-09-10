@@ -12,14 +12,14 @@ import com.ononedb.nextweb.common.OnedbFactory;
 
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.NextwebOperation;
-import io.nextweb.promise.NextwebPromise;
+import io.nextweb.promise.DataPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.utils.CallbackUtils;
 
 public class OnedbJsFactory extends OnedbFactory {
 
     @Override
-    public <ResultType> NextwebPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
+    public <ResultType> DataPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
             final Client session, final NextwebOperation<ResultType> asyncResult) {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
