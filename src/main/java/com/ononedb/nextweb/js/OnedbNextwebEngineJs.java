@@ -26,7 +26,7 @@ import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.NextwebEngineJs;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
-import io.nextweb.promise.exceptions.NextwebExceptionManager;
+import io.nextweb.promise.exceptions.DataExceptionManager;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
@@ -53,7 +53,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     private final JsFactory jsFactory;
 
     protected BasicClient client;
-    protected NextwebExceptionManager exceptionManager;
+    protected DataExceptionManager exceptionManager;
 
     @Override
     public Client createClient() {
@@ -95,7 +95,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public NextwebExceptionManager getExceptionManager() {
+    public DataExceptionManager getExceptionManager() {
 
         return exceptionManager;
     }

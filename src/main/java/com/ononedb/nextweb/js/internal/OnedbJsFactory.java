@@ -13,13 +13,13 @@ import com.ononedb.nextweb.common.OnedbFactory;
 import io.nextweb.promise.Fn;
 import io.nextweb.promise.DataOperation;
 import io.nextweb.promise.DataPromise;
-import io.nextweb.promise.exceptions.NextwebExceptionManager;
+import io.nextweb.promise.exceptions.DataExceptionManager;
 import io.nextweb.promise.utils.CallbackUtils;
 
 public class OnedbJsFactory extends OnedbFactory {
 
     @Override
-    public <ResultType> DataPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
+    public <ResultType> DataPromise<ResultType> createPromise(final DataExceptionManager exceptionManager,
             final Client session, final DataOperation<ResultType> asyncResult) {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
@@ -28,7 +28,7 @@ public class OnedbJsFactory extends OnedbFactory {
 
     }
 
-    private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
+    private <ResultType> Promise<ResultType> createPromiseNew(final DataExceptionManager exceptionManager,
             final Client session, final DataOperation<ResultType> operation) {
 
         final Promise<ResultType> promise = PromisesCommon.createUnsafe(new Operation<ResultType>() {
