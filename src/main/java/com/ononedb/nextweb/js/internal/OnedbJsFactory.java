@@ -7,11 +7,11 @@ import delight.promise.Promise;
 import delight.promise.PromisesCommon;
 
 import com.appjangle.api.Client;
-import com.ononedb.nextweb.common.NextwebPromiseImpl;
+import com.ononedb.nextweb.common.DataPromiseImpl;
 import com.ononedb.nextweb.common.OnedbFactory;
 
 import io.nextweb.promise.Fn;
-import io.nextweb.promise.NextwebOperation;
+import io.nextweb.promise.DataOperation;
 import io.nextweb.promise.DataPromise;
 import io.nextweb.promise.exceptions.NextwebExceptionManager;
 import io.nextweb.promise.utils.CallbackUtils;
@@ -20,16 +20,16 @@ public class OnedbJsFactory extends OnedbFactory {
 
     @Override
     public <ResultType> DataPromise<ResultType> createPromise(final NextwebExceptionManager exceptionManager,
-            final Client session, final NextwebOperation<ResultType> asyncResult) {
+            final Client session, final DataOperation<ResultType> asyncResult) {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
 
-        return new NextwebPromiseImpl<ResultType>(asyncResult, promise, exceptionManager, session);
+        return new DataPromiseImpl<ResultType>(asyncResult, promise, exceptionManager, session);
 
     }
 
     private <ResultType> Promise<ResultType> createPromiseNew(final NextwebExceptionManager exceptionManager,
-            final Client session, final NextwebOperation<ResultType> operation) {
+            final Client session, final DataOperation<ResultType> operation) {
 
         final Promise<ResultType> promise = PromisesCommon.createUnsafe(new Operation<ResultType>() {
 
