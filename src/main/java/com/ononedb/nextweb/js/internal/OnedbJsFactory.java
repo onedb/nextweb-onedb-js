@@ -7,7 +7,7 @@ import delight.promise.Promise;
 import delight.promise.PromisesCommon;
 
 import com.appjangle.api.Client;
-import com.ononedb.nextweb.common.DataPromiseImpl;
+import com.ononedb.nextweb.common.DataPromiseImplWithClient;
 import com.ononedb.nextweb.common.OnedbFactory;
 
 import io.nextweb.promise.Fn;
@@ -24,7 +24,7 @@ public class OnedbJsFactory extends OnedbFactory {
 
         final Promise<ResultType> promise = createPromiseNew(exceptionManager, session, asyncResult);
 
-        return new DataPromiseImpl<ResultType>(asyncResult, promise, exceptionManager, session);
+        return new DataPromiseImplWithClient<ResultType>(asyncResult, promise, exceptionManager, session);
 
     }
 
