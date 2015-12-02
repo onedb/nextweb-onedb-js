@@ -24,9 +24,9 @@ import de.mxro.client.BasicClient;
 import de.mxro.client.ClientsCommon;
 import io.nextweb.js.engine.JsFactory;
 import io.nextweb.js.engine.NextwebEngineJs;
+import io.nextweb.promise.exceptions.DataExceptionManager;
 import io.nextweb.promise.exceptions.ExceptionListener;
 import io.nextweb.promise.exceptions.ExceptionResult;
-import io.nextweb.promise.exceptions.DataExceptionManager;
 import io.nextweb.promise.js.exceptions.ExceptionUtils;
 import nx.client.gwt.services.GwtRemoteService;
 import nx.client.gwt.services.GwtRemoteServiceAsync;
@@ -213,6 +213,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
                 if (r == null) {
                     throw new IllegalArgumentException("onFailure called with ExceptionResult null.");
                 }
+
                 Console.log("Unhandled background exception: " + r.exception().getMessage() + " from " + r.origin());
                 Console.log(ExceptionUtils.getStacktraceAsHtml(r.exception()));
                 throw new RuntimeException(r.exception());
