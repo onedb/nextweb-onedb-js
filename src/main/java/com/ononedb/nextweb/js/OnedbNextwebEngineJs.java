@@ -185,11 +185,11 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
                 if (origin == null) {
                     originTrace = "Origin is null.";
                 } else {
-                    originTrace = ExceptionUtils.getStacktrace(origin);
+                    originTrace = ExceptionUtils.getStacktraceAsHtml(origin);
                 }
 
                 throw new RuntimeException("Uncaught background exception: " + t.getMessage() + " for operation: ["
-                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktrace(t)
+                        + operation + "] originating from: [" + origin + "]. " + ExceptionUtils.getStacktraceAsHtml(t)
                         + " Origin Trace: " + originTrace, t);
             }
         });
@@ -214,7 +214,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
                     throw new IllegalArgumentException("onFailure called with ExceptionResult null.");
                 }
                 Console.log("Unhandled background exception: " + r.exception().getMessage() + " from " + r.origin());
-                Console.log(ExceptionUtils.getStacktrace(r.exception()));
+                Console.log(ExceptionUtils.getStacktraceAsHtml(r.exception()));
                 throw new RuntimeException(r.exception());
             }
         });
