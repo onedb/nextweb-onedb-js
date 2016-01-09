@@ -214,7 +214,8 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
                     throw new IllegalArgumentException("onFailure called with ExceptionResult null.");
                 }
 
-                Console.log("Unhandled background exception: " + r.exception().getMessage() + " from " + r.origin());
+                Console.log(
+                        "Unhandled exception caught by engine: " + r.exception().getMessage() + " from " + r.origin());
                 Console.log(ExceptionUtils.getStacktraceAsHtml(r.exception()));
                 throw new RuntimeException(r.exception());
             }
