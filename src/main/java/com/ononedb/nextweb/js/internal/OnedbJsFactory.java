@@ -44,14 +44,6 @@ public class OnedbJsFactory extends OnedbFactory {
             }
         });
 
-        // promise.addExceptionFallback(new Closure<Throwable>() {
-        //
-        // @Override
-        // public void apply(final Throwable o) {
-        // exceptionManager.onFailure(Fn.exception(this, o));
-        // }
-        // });
-
         return promise;
     }
 }
