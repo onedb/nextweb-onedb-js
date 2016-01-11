@@ -12,6 +12,7 @@ import com.ononedb.nextweb.common.OnedbFactory;
 
 import io.nextweb.promise.DataOperation;
 import io.nextweb.promise.DataPromise;
+import io.nextweb.promise.Fn;
 import io.nextweb.promise.exceptions.DataExceptionManager;
 import io.nextweb.promise.utils.CallbackUtils;
 
