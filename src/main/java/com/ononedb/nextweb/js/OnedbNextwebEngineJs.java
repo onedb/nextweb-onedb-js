@@ -2,7 +2,6 @@ package com.ononedb.nextweb.js;
 
 import delight.concurrency.gwt.ConcurrencyGwt;
 import delight.gwt.console.Console;
-import delight.rpc.DeprecatedRemoteConnection;
 import delight.rpc.RemoteConnection;
 
 import com.appjangle.api.Client;
@@ -145,7 +144,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
     }
 
     @Override
-    public DeprecatedRemoteConnection createRemoteConnection() {
+    public RemoteConnection createRemoteConnection() {
         return OneGwt.createRemoteConnection();
     }
 
