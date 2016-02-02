@@ -59,14 +59,14 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
         final CoreDsl dsl = this.dsl;
 
-        return getOnedbFactory().createSession(this, dsl.createClient(), null);
+        return getOnedbFactory().createClient(this, dsl.createClient(), null);
     }
 
     @Override
     public Client createClient(final ClientConfiguration configuration) {
         final CoreDsl dsl = this.dsl;
 
-        return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
+        return getOnedbFactory().createClient(this, dsl.createClient(configuration), configuration);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
             }
 
         };
-        return getOnedbFactory().createSession(this, dsl.createClient(configuration), configuration);
+        return getOnedbFactory().createClient(this, dsl.createClient(configuration), configuration);
     }
 
     @Override
