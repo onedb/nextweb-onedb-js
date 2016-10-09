@@ -11,6 +11,8 @@ import com.appjangle.api.engine.AppjangleClientEngineInternal;
 import com.appjangle.api.engine.AppjangleGlobal;
 import com.appjangle.api.engine.Factory;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.ononedb.nextweb.OnedbNextwebEngine;
 import com.ononedb.nextweb.common.H;
@@ -209,14 +211,21 @@ public class OnedbNextwebEngineJs implements OnedbNextwebEngine, NextwebEngineJs
 
             @Override
             public void onFailure(final ExceptionResult r) {
-                if (r == null) {
-                    throw new IllegalArgumentException("onFailure called with ExceptionResult null.");
-                }
+                // run this deferred to not interfere with any working threads
+                Scheduler.get().scheduleDeferred(new Command() {
+                    @Override
+                    public void execute() {
+                        if (r == null) {
+                            throw new IllegalArgumentException("onFailure called with ExceptionResult null.");
+                        }
 
-                Console.log(
-                        "Unhandled exception caught by engine: " + r.exception().getMessage() + " from " + r.origin());
-                Console.log(ExceptionUtils.getStacktraceAsHtml(r.exception()));
-                throw new RuntimeException(r.exception());
+                        Console.log("Unhandled exception caught by engine: " + r.exception().getMessage() + " from "
+                                + r.origin());
+                        Console.log(ExceptionUtils.getStacktraceAsHtml(r.exception()));
+                        throw new RuntimeException(r.exception());
+                    }
+                });
+
             }
         });
         this.jsFactory = new JsFactory(this);
