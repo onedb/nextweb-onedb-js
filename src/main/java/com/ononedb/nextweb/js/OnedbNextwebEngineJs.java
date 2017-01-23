@@ -6,7 +6,7 @@ import delight.rpc.RemoteConnection;
 
 import com.appjangle.api.Client;
 import com.appjangle.api.common.ClientConfiguration;
-import com.appjangle.api.engine.AppjangleClientEngine;
+import com.appjangle.api.engine.ClientEngine;
 import com.appjangle.api.engine.AppjangleClientEngineInternal;
 import com.appjangle.api.engine.AppjangleGlobal;
 import com.appjangle.api.engine.Factory;
@@ -42,7 +42,7 @@ import one.core.dsl.CoreDsl;
 
 /**
  * <p>
- * The onedb implementation of a {@link AppjangleClientEngine}.
+ * The onedb implementation of a {@link ClientEngine}.
  * 
  * @author <a href="http://www.mxro.de">Max Rohde</a>
  *
